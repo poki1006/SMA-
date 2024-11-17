@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Odliczanie do Zagadki</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      background: url('https://link-do-twojego-tla.jpg') no-repeat center center/cover;
+      color: #fff;
+      text-align: center;
+    }
+    #countdown {
+      font-size: 3em;
+      margin: 20px;
+    }
+    #code-input {
+      margin-top: 20px;
+    }
+    #code {
+      padding: 10px;
+      font-size: 1em;
+      width: 200px;
+    }
+    #submit-btn {
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    #link-to-next {
+      margin-top: 20px;
+      font-size: 1.2em;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Odliczanie do Zagadki</h1>
+  <div id="countdown">00:00:00</div>
+
+  <div id="code-input">
+    <label for="code">Wpisz kod:</label>
+    <input type="text" id="code" placeholder="Wpisz kod tutaj">
+    <button id="submit-btn" onclick="checkCode()">Sprawdź kod</button>
+  </div>
+
+  <div id="link-to-next">
+    <a href="twoja-strona-zagadka.html">Przejdź do pierwszej zagadki!</a>
+  </div>
+
+  <script>
+    const targetDate = new Date("2024-12-01T00:00:00").getTime();
+
+    const countdownTimer = setInterval(function() {
+      const now = new Date().getTime();
+      const timeLeft = targetDate - now;
+
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+      if (timeLeft < 0) {
+        clearInterval(countdownTimer);
+        document.getElementById("countdown").innerHTML = "Zaczynamy!";
+      }
+    }, 1000);
+
+    function checkCode() {
+      const code = document.getElementById("code").value;
+      const correctCode = "TAJNYKOD"; 
+
+      if (code === correctCode) {
+        document.getElementById("link-to-next").style.display = "block";
+        alert("Kod poprawny! Przechodzisz dalej.");
+      } else {
+        alert("Kod niepoprawny. Spróbuj ponownie.");
+      }
+    }
+  </script>
+</body>
