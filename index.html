@@ -13,7 +13,7 @@
       height: 100vh;
       font-family: Arial, sans-serif;
       background: url('https://link-do-twojego-tla.jpg') no-repeat center center/cover;
-      color: 36443
+      color: #44475e
       text-align: center;
     }
     #countdown {
@@ -32,7 +32,7 @@
       padding: 10px 20px;
       font-size: 1em;
       background-color: #4CAF50;
-      color: white;
+      color: rgb(0, 0, 0);
       border: none;
       cursor: pointer;
     }
@@ -54,11 +54,11 @@
   </div>
 
   <div id="link-to-next">
-    <a href="twoja-strona-zagadka.html">Przejdź do pierwszej zagadki!</a>
+    <a href="https://youtu.be/coyEUiaHH0k?si=FtWMeTM9ZhJnfsKq">Przejdź do pierwszej zagadki!</a>
   </div>
 
   <script>
-    const targetDate = new Date("2024-18-11T00:00:00").getTime();
+    const targetDate = new Date("2024-30-11T00:00:00").getTime();
 
     const countdownTimer = setInterval(function() {
       const now = new Date().getTime();
@@ -79,7 +79,7 @@
 
     function checkCode() {
       const code = document.getElementById("code").value;
-      const correctCode = "TAJNYKOD"; 
+      const correctCode = ".. -. --.- ..- .. ... .. - --- .-."; 
 
       if (code === correctCode) {
         document.getElementById("link-to-next").style.display = "block";
